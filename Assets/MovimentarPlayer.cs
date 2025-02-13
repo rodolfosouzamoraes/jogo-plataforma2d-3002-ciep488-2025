@@ -113,7 +113,7 @@ public class MovimentarPlayer : MonoBehaviour
             if(limiteCabeca.estaNoLimite == false)
             {
                 //Zerar as forças do rigibody
-                rigidbody2d.linearVelocity = Vector3.zero;
+                ResetarFisicaDeMovimentacao();
 
                 //Alterar as propriedades do rigidbody para fazer o player subir
                 rigidbody2d.gravityScale = 0;
@@ -200,5 +200,26 @@ public class MovimentarPlayer : MonoBehaviour
                 AtivarTempoPulo();
             }
         }
+    }
+
+    /// <summary>
+    /// Resetar as forças do rigidbody2d do player
+    /// </summary>
+    public void ResetarFisicaDeMovimentacao()
+    {
+        rigidbody2d.linearVelocity = Vector3.zero;
+    }
+
+    /// <summary>
+    /// Arremessar o player para uma direção aleatória
+    /// </summary>
+    public void ArremessarPlayer()
+    {
+        //Sortear um numero entre 0 e 1 para poder definir qual a direção a ser arremessado
+        int valorSorteado = new System.Random().Next(0, 2);
+        int direcaoX = valorSorteado == 0 ? -1000 : 1000;
+
+        //Aplicar a força no player
+        rigidbody2d.AddForce(new Vector2(direcaoX, 1000));
     }
 }
