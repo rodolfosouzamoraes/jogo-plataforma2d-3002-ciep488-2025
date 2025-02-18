@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovimentarPlayer : MonoBehaviour
 {
     public FlipCorpoPlayer flipCorpo;
+    public AnimacaoPlayer animacaoPlayer;
     public LimitePlayer limiteDireita;
     public LimitePlayer limiteEsquerda;
     public LimitePlayer limiteCabeca;
@@ -58,6 +59,27 @@ public class MovimentarPlayer : MonoBehaviour
             flipCorpo.OlharEsquerda();
         }
 
+        //Verificar se está no chão para poder ativar as animações de movimento
+        if(limitePe.estaNoLimite == true)
+        {
+            //Verificar se o player está movendo
+            if(eixoX != 0)
+            {
+                //Ativa animação de corrida
+                animacaoPlayer.PlayCorrendo();
+            }
+            else
+            {
+                //Ativa animação de parado
+                animacaoPlayer.PlayParado();
+            }
+        }
+        else
+        {
+            //Ativa animação de queda
+            animacaoPlayer.PlayCaindo();
+        }
+
         //Direção da movimentação
         Vector3 direcaoMovimento = new Vector3(eixoX,0,0);
 
@@ -73,6 +95,9 @@ public class MovimentarPlayer : MonoBehaviour
             //Verificar se o pulo está habilitado
             if (limitePe.estaNoLimite == true && estaPulando == false)
             {
+                //Ativa animação de pulo
+                animacaoPlayer.PlayPulando();
+
                 //Habilitar o está pulando
                 estaPulando = true;
 
@@ -87,6 +112,9 @@ public class MovimentarPlayer : MonoBehaviour
                 //Verificar se pode fazer o pulo duplo
                 if(puloDuplo == true)
                 {
+                    //Ativa a animação de pulo duplo
+                    animacaoPlayer.PlayPuloDuplo();
+
                     //Habilito novamente o pulo
                     estaPulando = true;
 
@@ -171,6 +199,8 @@ public class MovimentarPlayer : MonoBehaviour
         if (limitePe.estaNoLimite == false && limiteCabeca.estaNoLimite == false && 
             (limiteEsquerda.estaNoLimite == true || limiteDireita.estaNoLimite == true))
         {
+            //Ativar a animação de Deslizar da Parede
+            animacaoPlayer.PlayDeslizarParede();
 
             //Obter a entrada do usuário para poder efetuar o pulo pela parede
             if (Input.GetButtonDown("Jump"))
@@ -186,6 +216,9 @@ public class MovimentarPlayer : MonoBehaviour
                 {
                     forcaPuloX = 0;
                 }
+
+                //Ativa animação de pulo
+                animacaoPlayer.PlayPulando();
 
                 //Habilitar o pulo duplo
                 puloDuplo = true;

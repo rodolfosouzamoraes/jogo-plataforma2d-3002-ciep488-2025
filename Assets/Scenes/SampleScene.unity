@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipCorpo: {fileID: 1160084102}
+  animacaoPlayer: {fileID: 1160084104}
   limiteDireita: {fileID: 626308459}
   limiteEsquerda: {fileID: 331979283}
   limiteCabeca: {fileID: 2068859124}
@@ -233,7 +234,7 @@ Transform:
   m_GameObject: {fileID: 90064438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.78, y: -4.017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -257,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movimentarPlayer: {fileID: 90064439}
+  animacaoPlayer: {fileID: 1160084104}
 --- !u!1 &167585536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1317,7 @@ GameObject:
   - component: {fileID: 1160084101}
   - component: {fileID: 1160084102}
   - component: {fileID: 1160084103}
+  - component: {fileID: 1160084104}
   m_Layer: 7
   m_Name: CorpoPlayer
   m_TagString: Untagged
@@ -1427,6 +1430,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1160084104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160084099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c836d8a8b0630f84895a261e7c1585a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1160084103}
 --- !u!1 &1630197729
 GameObject:
   m_ObjectHideFlags: 0
