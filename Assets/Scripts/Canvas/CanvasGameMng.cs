@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,6 +29,12 @@ public class CanvasGameMng : MonoBehaviour
 
     private DanoPlayer danoPlayer;//Códigos para desabilitar o jogador
 
+    public TextMeshProUGUI txtTotalItensColetados;//Texto que exibe o total de itens coletados
+    private int totalItensColetados;//Variável para poder armazentar os itens coletados
+
+    public TextMeshProUGUI txtTempoJogo;//Texto que exibe o tempo do jogo
+    public float tempoJogo;//Variavel com o tempo do level atual
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,12 +43,20 @@ public class CanvasGameMng : MonoBehaviour
 
         //Pegar a referencia do dano player na cena
         danoPlayer = FindFirstObjectByType<DanoPlayer>(); //Antigo FindObjectOfType
+
+        //Zerar o total de itens coletados
+        totalItensColetados = 0;
+
+        //Atualizar o texto com o total de itens coletados
+        txtTotalItensColetados.text = $"x{totalItensColetados}";
+
+        //Atualizar o texto com o tempo atual
+        txtTempoJogo.text = tempoJogo.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        ContarTempo();
     }
 
     public void DecrementarVidaJogador()
@@ -103,5 +118,38 @@ public class CanvasGameMng : MonoBehaviour
     {
         //Reiniciar a cena do jogo
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /// <summary>
+    /// Método para incrementar um item ao total de itens coletados
+    /// </summary>
+    public void IncrementarItemColetavel()
+    {
+        //Incrementar o item na variavel
+        totalItensColetados++;
+
+        //Atualizar o texto com o total de itens coletados
+        txtTotalItensColetados.text = $"x{totalItensColetados}";
+    }
+
+    private void ContarTempo()
+    {
+        //Verificar se o jogo acabou para parar de contar o tempo
+        if (fimDeJogo == true) return;
+
+        //Incrementar o tempo na variavel 
+        tempoJogo -= Time.deltaTime;
+
+        //Verificar se o tempo acabou
+        if(tempoJogo <= 0)
+        {
+            //Finalizar o jogo
+            FimDeJogo();
+        }
+        else 
+        { 
+            //Atualizar o texto com o tempo atual
+            txtTempoJogo.text = ((int)tempoJogo).ToString();
+        }
     }
 }
