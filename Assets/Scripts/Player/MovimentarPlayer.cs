@@ -32,6 +32,9 @@ public class MovimentarPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Verificar se o jogo acabou
+        if (CanvasGameMng.Instance.fimDeJogo == true) return;
+
         Movimentar();
         Pular();
         PularDaParede();
@@ -254,5 +257,29 @@ public class MovimentarPlayer : MonoBehaviour
 
         //Aplicar a força no player
         rigidbody2d.AddForce(new Vector2(direcaoX, 1000));
+    }
+
+    /// <summary>
+    /// Método para remover a gravidade
+    /// </summary>
+    public void RemoverGravidade()
+    {
+        //Remover a gravidade do player
+        rigidbody2d.bodyType = RigidbodyType2D.Static;
+    }
+
+    /// <summary>
+    /// Método para tirar as funções do player
+    /// </summary>
+    public void CongelarPlayer()
+    {
+        //Desabilitar as fisicas
+        ResetarFisicaDeMovimentacao();
+
+        //Remover a gravidade
+        RemoverGravidade();
+
+        //Ativar animação de parado
+        animacaoPlayer.PlayParado();
     }
 }

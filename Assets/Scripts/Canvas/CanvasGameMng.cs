@@ -27,7 +27,7 @@ public class CanvasGameMng : MonoBehaviour
 
     public bool fimDeJogo;//Diz se o jogo acabou
 
-    private DanoPlayer danoPlayer;//Códigos para desabilitar o jogador
+    private PlayerControlador playerControlador; //Códigos que controlam os atributos do player
 
     public TextMeshProUGUI txtTotalItensColetados;//Texto que exibe o total de itens coletados
     private int totalItensColetados;//Variável para poder armazentar os itens coletados
@@ -41,9 +41,6 @@ public class CanvasGameMng : MonoBehaviour
         //Adicionar o total de vidas que o player tem ao iniciar o jogo
         totalVidas = sptsVida.Length - 1;
 
-        //Pegar a referencia do dano player na cena
-        danoPlayer = FindFirstObjectByType<DanoPlayer>(); //Antigo FindObjectOfType
-
         //Zerar o total de itens coletados
         totalItensColetados = 0;
 
@@ -52,6 +49,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Atualizar o texto com o tempo atual
         txtTempoJogo.text = tempoJogo.ToString();
+
+        //Pegar a referencia do controle do player
+        playerControlador = FindFirstObjectByType<PlayerControlador>();
     }
 
     private void Update()
@@ -92,7 +92,7 @@ public class CanvasGameMng : MonoBehaviour
         imgVida.sprite = sptsVida[totalVidas];
 
         //Desabilitar Funções do jogador
-        danoPlayer.MatarJogador();
+        playerControlador.DanoPlayer.MatarJogador();
 
         //Contar o tempo para reiniciar a cena
         StartCoroutine(ReiniciarLevel());
@@ -151,5 +151,19 @@ public class CanvasGameMng : MonoBehaviour
             //Atualizar o texto com o tempo atual
             txtTempoJogo.text = ((int)tempoJogo).ToString();
         }
+    }
+
+    /// <summary>
+    /// Método para finalizar o level
+    /// </summary>
+    public void CompletouLevel()
+    {
+        //Dizer que o jogo acabou
+        fimDeJogo = true;
+
+        //Congelar o player
+        playerControlador.MovimentarPlayer.CongelarPlayer();
+
+        //Exibir a tela final do level
     }
 }
