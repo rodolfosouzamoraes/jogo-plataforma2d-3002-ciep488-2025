@@ -24,11 +24,11 @@ public class DanoPlayer : MonoBehaviour
     /// </summary>
     public void MatarJogador()
     {
-        //Remover a fisica do player
-        Destroy(movimentarPlayer.rigidbody2d);
+        //Remover a gravidade do player
+        movimentarPlayer.RemoverGravidade();
 
-        //Remover a movimentação do player
-        Destroy(movimentarPlayer);
+        //Remover a as forças direcionais do player
+        movimentarPlayer.ResetarFisicaDeMovimentacao();
 
         //Ativar animação de morte
         animacaoPlayer.PlayMorte();

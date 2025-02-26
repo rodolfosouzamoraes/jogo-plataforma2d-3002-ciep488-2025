@@ -205,6 +205,10 @@ public class MovimentarPlayer : MonoBehaviour
             //Ativar a animação de Deslizar da Parede
             animacaoPlayer.PlayDeslizarParede();
 
+            //Fazer o player olhar para o lado oposto a qual ele está deslizando pela parede
+            if (limiteEsquerda.estaNoLimite == true) flipCorpo.OlharEsquerda();
+            else flipCorpo.OlharDireita();
+
             //Obter a entrada do usuário para poder efetuar o pulo pela parede
             if (Input.GetButtonDown("Jump"))
             {
