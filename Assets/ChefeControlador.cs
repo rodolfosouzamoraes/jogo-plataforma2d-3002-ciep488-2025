@@ -30,9 +30,53 @@ public class ChefeControlador : MonoBehaviour
         colisores.Add(GetComponent<BoxCollider2D>());
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Havilita o item final após o fim da animação de morte do chefe
+    /// </summary>
+    public void AtivarItemFinal()
     {
-        
+        //Habilitar o item final
+        itemFinal.SetActive(true);
+
+        //Destruir o chefe
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Habilita a movimentação quando o player entra na zona do chefe
+    /// </summary>
+    public void HabilitarMovimentacao()
+    {
+        //Habilitar movimentação
+        estaMovendo = true;
+
+        //Ativar animação de corrida
+        animator.SetBool("Correndo", true);
+    }
+
+    public void DecrementarVidaChefe() { 
+        //Decrementar a vida do chefe
+        vidaChefe--;
+
+        //Verificar se a vida do chefe acabou
+        if (vidaChefe == 0)
+        {
+            //Desabilitar a movimentacao
+            estaMovendo = false;
+
+            //Destruir os colisores
+            foreach (var colisor in colisores)
+            {
+                Destroy(colisor);
+            }
+
+            //Ativa a animação de morte do chefe
+            animator.SetTrigger("Morte");
+        }
+        else
+        {
+            //Ativar animação de dano
+            animator.SetTrigger("Dano");
+        }   
     }
 }
