@@ -790,7 +790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4957134878153374035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7717022995022622257}
+        m_TargetAssemblyTypeName: CanvasGameMng, Assembly-CSharp
+        m_MethodName: ProximoLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3916772897311067480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fc3f1c153654648a26d270fb578ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fimDeJogo: 0
   imgVida: {fileID: 1014697259037170711}
   sptsVida:
   - {fileID: 1512226476, guid: d081f2fb99710a941ac293c7972fe66e, type: 3}
@@ -1470,7 +1483,6 @@ MonoBehaviour:
   - {fileID: 883609207, guid: d081f2fb99710a941ac293c7972fe66e, type: 3}
   - {fileID: 779863985, guid: d081f2fb99710a941ac293c7972fe66e, type: 3}
   - {fileID: 750920272, guid: d081f2fb99710a941ac293c7972fe66e, type: 3}
-  fimDeJogo: 0
   txtTotalItensColetados: {fileID: 7757645281132150770}
   txtTempoJogo: {fileID: 7692135570018975580}
   tempoJogo: 50

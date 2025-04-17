@@ -21,28 +21,29 @@ public class CanvasGameMng : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public bool fimDeJogo;//Diz se o jogo acabou
+    private PlayerControlador playerControlador; //Códigos que controlam os atributos do player
+
+    [Header("Vida do Player")]
     public Image imgVida;//Imagem da vida
     public Sprite[] sptsVida;//Os sprites que vão aparecer na img da vida
     private int totalVidas;//Quantidade de vidas do player
 
-    public bool fimDeJogo;//Diz se o jogo acabou
-
-    private PlayerControlador playerControlador; //Códigos que controlam os atributos do player
-
+    [Header("Controle do Painel Topo")]    
     public TextMeshProUGUI txtTotalItensColetados;//Texto que exibe o total de itens coletados
     private int totalItensColetados;//Variável para poder armazentar os itens coletados
-
     public TextMeshProUGUI txtTempoJogo;//Texto que exibe o tempo do jogo
     public float tempoJogo;//Variavel com o tempo do level atual
-
     public GameObject pnlTopo; //Variável para manipular o objeto topo da tela
+
+    [Header("Controle do Painel Lv. Completado")]
     public GameObject pnlLevelCompletado; //Variável para manipular o objeto do painel de fim de jogo
     public TextMeshProUGUI txtTotalItensColetadosFinal; //Texto que exibe o total final de itens coletados
-
     public Image imgIconeMedalha; //Imagem da medalha
     public Sprite[] sptsMedalhas; //Sprites com as 3 medalhas
     private float qtdDeItensColetaveisNoLevel;// Quantidade de itens coletaveis que existe no level ao começar o jogo
     private int idMedalha; //Identificador da medalha que o jogador conseguiu no level
+    private int idLevel; //Identificador do level atual
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -70,6 +71,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Diz quantos itens coletaveis há no inicio do level
         qtdDeItensColetaveisNoLevel = FindObjectsByType<ItemColetavel>(FindObjectsSortMode.None).Length;
+
+        //Identificar o id do level atual
+        idLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void Update()
@@ -194,6 +198,12 @@ public class CanvasGameMng : MonoBehaviour
         //Calcular a medalha do level
         CalcularMedalhaLevel();
 
+        //Salvar os dados na memória
+        DBMng.SalvarDadosLevel(idLevel, 
+            totalItensColetados, 
+            idMedalha
+        );
+
         //Exibir a tela de level completado
         pnlTopo.SetActive(false);
         pnlLevelCompletado.SetActive(true);
@@ -226,5 +236,11 @@ public class CanvasGameMng : MonoBehaviour
 
         //Atribuo a medalha na imagem do icone
         imgIconeMedalha.sprite = sptsMedalhas[idMedalha];
+    }
+
+    public void ProximoLevel()
+    {
+        //Carregar a proxima cena
+        SceneManager.LoadScene(idLevel + 1); 
     }
 }
