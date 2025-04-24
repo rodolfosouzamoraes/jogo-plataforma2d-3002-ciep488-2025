@@ -1918,6 +1918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BolaDeEspinhos
       objectReference: {fileID: 0}
+    - target: {fileID: 9133634488636846783, guid: 0f144b909ffd3f74b83b11f0f7604a4c, type: 3}
+      propertyPath: rotacaoConstante
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18555,6 +18559,10 @@ PrefabInstance:
     - target: {fileID: 5787203560756809065, guid: ce74505b85c922b419e1eb8e2215baa0, type: 3}
       propertyPath: m_Name
       value: CanvasGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717022995022622257, guid: ce74505b85c922b419e1eb8e2215baa0, type: 3}
+      propertyPath: tempoJogo
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

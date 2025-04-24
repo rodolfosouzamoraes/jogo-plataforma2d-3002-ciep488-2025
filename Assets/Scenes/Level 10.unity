@@ -15842,9 +15842,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3751023282989350240, guid: ce74505b85c922b419e1eb8e2215baa0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5787203560756809065, guid: ce74505b85c922b419e1eb8e2215baa0, type: 3}
       propertyPath: m_Name
       value: CanvasGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717022995022622257, guid: ce74505b85c922b419e1eb8e2215baa0, type: 3}
+      propertyPath: tempoJogo
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

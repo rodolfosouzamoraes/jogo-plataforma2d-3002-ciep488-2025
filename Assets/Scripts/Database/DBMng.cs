@@ -29,7 +29,7 @@ public static class DBMng
         }
 
         //Habilitar o próximo level para jogar
-        PlayerPrefs.SetInt(HABILITA_LEVEL + idLevel + 1, 1);
+        PlayerPrefs.SetInt(HABILITA_LEVEL + (idLevel + 1), 1);
     }
 
     public static int BuscarLevelHabilitado(int idLevel)

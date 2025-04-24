@@ -74,10 +74,18 @@ public class CanvasGameMng : MonoBehaviour
 
         //Identificar o id do level atual
         idLevel = SceneManager.GetActiveScene().buildIndex;
+
+        //Incrementar 1 segundo na variavel
+        tempoJogo += 1;
     }
 
     private void Update()
     {
+        //Verificar se apertou o Esc para voltar ao menu
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            VoltarMenu();
+        }
+
         ContarTempo();
     }
 
@@ -242,5 +250,10 @@ public class CanvasGameMng : MonoBehaviour
     {
         //Carregar a proxima cena
         SceneManager.LoadScene(idLevel + 1); 
+    }
+
+    public void VoltarMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

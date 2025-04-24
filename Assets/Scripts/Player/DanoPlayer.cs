@@ -6,6 +6,9 @@ public class DanoPlayer : MonoBehaviour
     public AnimacaoPlayer animacaoPlayer;
     public void EfetuarDano()
     {
+        //Verificar se o jogo acabou
+        if (CanvasGameMng.Instance.fimDeJogo == true) return;
+
         //Ativa animação de dano
         animacaoPlayer.PlayDano();
 

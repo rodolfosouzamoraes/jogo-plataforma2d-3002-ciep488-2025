@@ -16,6 +16,9 @@ public class CanvasMenuMng : MonoBehaviour
     {
         //Exibir a tela de menu ao iniciar o jogo
         ExibirPainel(0);
+
+        //Configurar o painel niveis
+        ConfigurarPainelNiveis();
     }
 
     // Update is called once per frame
