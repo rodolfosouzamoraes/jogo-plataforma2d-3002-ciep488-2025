@@ -11,6 +11,9 @@ public class ItemColetavel : MonoBehaviour
         //Verificar se foi o player que colidiu com o item e se já houve colisao
         if(coletouItem == false && colisao.gameObject.tag == "Player")
         {
+            //Tocar audio da fruta
+            AudioMng.Instance.PlayAudioFruta();
+
             //Diz que já coletou o item
             coletouItem = true;
 

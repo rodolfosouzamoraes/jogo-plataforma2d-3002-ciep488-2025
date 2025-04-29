@@ -98,6 +98,9 @@ public class MovimentarPlayer : MonoBehaviour
             //Verificar se o pulo está habilitado
             if (limitePe.estaNoLimite == true && estaPulando == false)
             {
+                //Tocar o audio do pulo
+                AudioMng.Instance.PlayAudioPular();
+
                 //Ativa animação de pulo
                 animacaoPlayer.PlayPulando();
 
@@ -115,6 +118,9 @@ public class MovimentarPlayer : MonoBehaviour
                 //Verificar se pode fazer o pulo duplo
                 if(puloDuplo == true)
                 {
+                    //Tocar o audio do pulo
+                    AudioMng.Instance.PlayAudioPular();
+
                     //Ativa a animação de pulo duplo
                     animacaoPlayer.PlayPuloDuplo();
 
@@ -223,6 +229,9 @@ public class MovimentarPlayer : MonoBehaviour
                 {
                     forcaPuloX = 0;
                 }
+
+                //Tocar o audio do pulo
+                AudioMng.Instance.PlayAudioPular();
 
                 //Ativa animação de pulo
                 animacaoPlayer.PlayPulando();

@@ -9,5 +9,8 @@ public class InicioDoLevel : MonoBehaviour
     {
         player = FindFirstObjectByType<MovimentarPlayer>().gameObject;
         player.transform.position = posicaoPlayer.transform.position;
+
+        //Tocar audio de surgimento
+        AudioMng.Instance.PlayAudioSurgir();
     }
 }

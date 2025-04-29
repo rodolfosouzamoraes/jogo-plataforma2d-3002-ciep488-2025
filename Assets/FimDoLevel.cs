@@ -9,6 +9,9 @@ public class FimDoLevel : MonoBehaviour
         //Verificar se o player colidiu
         if(colisao.gameObject.tag == "Player")
         {
+            //Tocar audio fim do level
+            AudioMng.Instance.PlayAudioItemFinal();
+
             //Ativo a animação do fim do level
             animator.SetBool("FimDoLevel", true);
 

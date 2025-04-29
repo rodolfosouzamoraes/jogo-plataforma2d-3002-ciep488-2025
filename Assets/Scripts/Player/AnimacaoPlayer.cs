@@ -94,4 +94,10 @@ public class AnimacaoPlayer : MonoBehaviour
         animator.SetBool("Fim", true);
         animator.SetTrigger("Morte");
     }
+
+    public void PlayAudioMovimentacao()
+    {
+        //Tocar audio de passos do player
+        AudioMng.Instance.PlayAudioCorrer();
+    }
 }

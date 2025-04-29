@@ -77,6 +77,12 @@ public class CanvasGameMng : MonoBehaviour
 
         //Incrementar 1 segundo na variavel
         tempoJogo += 1;
+
+        //Atualizar volumes
+        AtualizarVolumes();
+
+        //Tocar o audio da cena level
+        AudioMng.Instance.PlayAudioLevel();
     }
 
     private void Update()
@@ -255,5 +261,11 @@ public class CanvasGameMng : MonoBehaviour
     public void VoltarMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private void AtualizarVolumes()
+    {
+        Volume volume = DBMng.ObterVolume();
+        AudioMng.Instance.MudarVolume(volume);
     }
 }
